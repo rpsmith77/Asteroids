@@ -18,7 +18,6 @@
 
 
 int main() {
-   
     
     // create the window
     sf::RenderWindow window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
@@ -43,7 +42,7 @@ int main() {
         asteroids[i].reset();
     }
     
-
+    
     // run the program as long as the window is open
     while (window.isOpen()) {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -71,7 +70,6 @@ int main() {
             asteroids[i].update();
         }
         
-        
         // if ship hasn't moved yet
         // buggy resets even when ship isn't moving
         if (!(ship.getPosition() == sf::Vector2f(GAME_WIDTH/2,GAME_HEIGHT/2) && ship.getVelocity() == sf::Vector2f(0,0))){
@@ -84,20 +82,18 @@ int main() {
             }
         }
         
-
         // clear the window with black color
         window.clear(sf::Color::Black);
-
+        
         // draw everything here...
         for (int i=0; i<numAsteroids; i++) {
             window.draw(asteroids[i]);
         }
         window.draw(ship);
-
-
+        
         // end the current frame
         window.display();
-    }
-
+    } // end game loop
+    
     return 0;
-}
+} // end main

@@ -7,6 +7,7 @@
 
 #include "Spaceship.hpp"
 
+// constructor
 Spaceship::Spaceship(){
     ship.setPointCount(3);
     ship.setPoint(0, sf::Vector2f(10.0f, 0.0f));
@@ -18,9 +19,7 @@ Spaceship::Spaceship(){
     ship.setPosition(GAME_WIDTH / 2, GAME_HEIGHT / 2);
 }
 
-
-
-
+// methods
 void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
     target.draw(ship, states);

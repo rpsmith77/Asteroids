@@ -17,7 +17,7 @@ private:
     sf::ConvexShape ship;
     sf::Vector2f velocity;
     float rotationRate = 360/20;
-
+    
 public:
     Spaceship();
     

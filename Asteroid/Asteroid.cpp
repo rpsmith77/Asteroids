@@ -45,5 +45,5 @@ void Asteroid::reset(){
         velocity.x = (velocity.x/speed) * MAX_SPEED * .5;
         velocity.y = (velocity.y/speed) * MAX_SPEED * .5;
     }
-
+    
 }

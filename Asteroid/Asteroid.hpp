@@ -15,7 +15,7 @@ class Asteroid : public sf::Drawable, public sf::Transformable {
 private:
     sf::CircleShape asteroid;
     sf::Vector2f velocity;
-
+    
 public:
     Asteroid();
     
