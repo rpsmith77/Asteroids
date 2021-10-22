@@ -1,5 +1,12 @@
-// Utilizing https://github.com/satanas/sfml-asteroids to help make this and understand
-// how to use sfml
+/*
+ The purpose of this program was to teach me the basics of how to use SFML.
+ It is based on Asteroid, the arcade game from 1979. In this I draw custom shapes,
+ random shapes, give those shapses physics and handle collisions.
+ 
+ Created by Ryan Smith
+ Utilizing https://github.com/satanas/sfml-asteroids to help make this and understand
+ how to use sfml
+ */
 
 #include <iostream>
 #include <SFML/Audio.hpp>

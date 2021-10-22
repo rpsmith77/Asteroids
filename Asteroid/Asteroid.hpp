@@ -2,8 +2,7 @@
 //  Asteroid.hpp
 //  Asteroid
 //
-//  Created by Ryan Smith on 10/21/21.
-//  Copyright © 2021 Ryan Smith. All rights reserved.
+//  Created by Ryan Smith
 //
 
 #ifndef Asteroid_hpp
