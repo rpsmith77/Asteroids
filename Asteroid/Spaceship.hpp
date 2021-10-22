@@ -28,6 +28,7 @@ public:
     void thrust();
     void updateRotation(int);
     void update();
+    void wrapScreen();
     void reset();
     
 };

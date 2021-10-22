@@ -41,8 +41,10 @@ void Spaceship::updateRotation(int rotation){
 
 void Spaceship::update(){
     ship.move(velocity);
-    
-    // wrap screen
+    wrapScreen();
+}
+
+void Spaceship::wrapScreen(){
     if (ship.getPosition().x < 0){
         ship.setPosition(GAME_WIDTH, ship.getPosition().y);
     } else if (ship.getPosition().x > GAME_WIDTH){

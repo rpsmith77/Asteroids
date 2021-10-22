@@ -18,6 +18,10 @@ void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 void Asteroid::update(){
     asteroid.move(velocity);
+    wrapScreen();
+}
+
+void Asteroid::wrapScreen(){
     if (asteroid.getPosition().x < 0){
         asteroid.setPosition(GAME_WIDTH, asteroid.getPosition().y);
     } else if (asteroid.getPosition().x > GAME_WIDTH){

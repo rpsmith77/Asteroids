@@ -24,6 +24,7 @@ public:
     
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void update();
+    void wrapScreen();
     void reset();
     
     
