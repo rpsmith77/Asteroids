@@ -31,8 +31,7 @@ void Spaceship::thrust(){
     velocity.y += ACCELERATION * sin(r * DEG2RAD);
     float speed = sqrt(velocity.x * velocity.x  + velocity.y * velocity.y);
     if (speed > MAX_SPEED){
-        velocity.x = velocity.x/speed * MAX_SPEED;
-        velocity.y = velocity.y/speed * MAX_SPEED;
+        velocity = MAX_SPEED * sf::Vector2f(velocity.x/speed, velocity.y/speed);
     }
 }
 

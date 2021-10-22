@@ -40,10 +40,9 @@ void Asteroid::reset(){
     asteroid.setPosition(rand() % GAME_WIDTH, rand() % GAME_HEIGHT);
     velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 : -1 * float(rand() % 10) / 100;
     velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 : -1 * float(rand() % 10) / 100;
-    float speed = sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
-    if (speed > MAX_SPEED * (2/3)){
-        velocity.x = (velocity.x/speed) * MAX_SPEED * .5;
-        velocity.y = (velocity.y/speed) * MAX_SPEED * .5;
+    float speed = sqrt(velocity.x * velocity.x  + velocity.y * velocity.y);
+    if (speed > .5 * MAX_SPEED){
+        velocity = .5f * MAX_SPEED * sf::Vector2f(velocity.x/speed, velocity.y/speed);
     }
     
 }

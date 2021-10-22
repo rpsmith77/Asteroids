@@ -65,6 +65,7 @@ int main() {
             
         }
         
+        // update positions
         ship.update();
         for(int i=0; i<numAsteroids; i++){
             asteroids[i].update();
@@ -85,7 +86,7 @@ int main() {
         // clear the window with black color
         window.clear(sf::Color::Black);
         
-        // draw everything here...
+        // draw everything
         for (int i=0; i<numAsteroids; i++) {
             window.draw(asteroids[i]);
         }
