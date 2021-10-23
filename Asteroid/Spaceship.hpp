@@ -30,6 +30,8 @@ public:
     void update();
     void wrapScreen();
     void reset();
+    float getAngle(){ return ship.getRotation(); };
+    sf::Vector2f getPosition(){ return ship.getPosition(); };
     
 };
 #endif /* Spaceship_hpp */

@@ -15,6 +15,7 @@
 #include "Constants.h"
 #include "Spaceship.hpp"
 #include "Asteroid.hpp"
+#include "Missile.hpp"
 
 
 int main() {
@@ -42,6 +43,14 @@ int main() {
         asteroids[i].reset();
     }
     
+    Missile missile;
+    
+    sf::RectangleShape rectangle(sf::Vector2f(100,100));
+    rectangle.setOrigin(50,50);
+    rectangle.setOutlineColor(sf::Color::Red);
+    rectangle.setOutlineThickness(5.f);
+    rectangle.setPosition(500.f,500.f);
+    rectangle.rotate(10.f);
     
     // run the program as long as the window is open
     while (window.isOpen()) {
@@ -60,6 +69,8 @@ int main() {
                     ship.updateRotation(RIGHT);
                 } else if(event.key.code == sf::Keyboard::Left){
                     ship.updateRotation(LEFT);
+                } else if(event.key.code == sf::Keyboard::Space){
+                    missile = Missile(ship.getAngle(), ship.getPosition());
                 }
             }
             
@@ -70,6 +81,7 @@ int main() {
         for(int i=0; i<numAsteroids; i++){
             asteroids[i].update();
         }
+        missile.update();
         
         // if ship hasn't moved yet
         // buggy resets even when ship isn't moving
@@ -91,6 +103,8 @@ int main() {
             window.draw(asteroids[i]);
         }
         window.draw(ship);
+        window.draw(missile);
+        window.draw(rectangle);
         
         // end the current frame
         window.display();

@@ -6,6 +6,7 @@
 //
 
 #include "Spaceship.hpp"
+#include <iostream>
 
 // constructor
 Spaceship::Spaceship(){

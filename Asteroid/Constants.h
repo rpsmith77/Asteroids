@@ -14,6 +14,7 @@
 const std::string GAME_NAME = "Asteroids!";
 const int GAME_WIDTH = 1000;
 const int GAME_HEIGHT = 1000;
+const int GAME_DIAGONAL = sqrt(GAME_WIDTH * GAME_WIDTH + GAME_HEIGHT * GAME_HEIGHT);
 const float PI = atan(1) * 4;
 const float DEG2RAD = PI / 180.f;
 const float MAX_SPEED = .15;
