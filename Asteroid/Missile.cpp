@@ -28,8 +28,10 @@ Missile::Missile(float angle,sf::Vector2f startingPoint){
 
 
 void Missile::draw(sf::RenderTarget& target, sf::RenderStates states) const{
-    states.transform *= getTransform();
-    target.draw(missile, states);
+    if(alive){
+        states.transform *= getTransform();
+        target.draw(missile, states);
+    }
 }
 void Missile::update(){
     if (alive)
@@ -40,6 +42,7 @@ void Missile::update(){
 }
 void Missile::blowUp(){
     alive = false;
+    missile.setPosition(GAME_WIDTH * 10, GAME_HEIGHT * 10);
 }
 bool Missile::outOfFrame(){
     return missile.getPosition().x < 0 || missile.getPosition().x > GAME_WIDTH ||

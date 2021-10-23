@@ -43,7 +43,9 @@ int main() {
         asteroids[i].reset();
     }
     
-    Missile missile;
+    int totalMissile = 5;
+    Missile missile[totalMissile];
+    int missileIndex = 0;
     
     // run the program as long as the window is open
     while (window.isOpen()) {
@@ -63,7 +65,9 @@ int main() {
                 } else if(event.key.code == sf::Keyboard::Left){
                     ship.updateRotation(LEFT);
                 } else if(event.key.code == sf::Keyboard::Space){
-                    missile = Missile(ship.getAngle(), ship.getPosition());
+                    missile[missileIndex++] = Missile(ship.getAngle(), ship.getPosition());
+                    if (missileIndex >= totalMissile)
+                        missileIndex = 0;
                 }
             }
             
@@ -74,7 +78,9 @@ int main() {
         for(int i=0; i<numAsteroids; i++){
             asteroids[i].update();
         }
-        missile.update();
+        for (int i=0; i<totalMissile; i++) {
+            missile[i].update();
+        }
         
         // if ship hasn't moved yet
         // buggy resets even when ship isn't moving
@@ -82,8 +88,14 @@ int main() {
             for (int i=0; i<numAsteroids; i++) {
                 if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                     asteroids[i].reset();
-                    //ship.reset();
+                    ship.reset();
                     collision.play();
+                }
+                for (int i=0; i<totalMissile; i++) {
+                    if (missile[i].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
+                        asteroids[i].reset();
+                        collision.play();
+                    }
                 }
             }
         }
@@ -96,7 +108,9 @@ int main() {
             window.draw(asteroids[i]);
         }
         window.draw(ship);
-        window.draw(missile);
+        for (int i=0; i<totalMissile; i++) {
+            window.draw(missile[i]);
+        }
         
         // end the current frame
         window.display();
