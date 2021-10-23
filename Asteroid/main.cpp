@@ -45,13 +45,6 @@ int main() {
     
     Missile missile;
     
-    sf::RectangleShape rectangle(sf::Vector2f(100,100));
-    rectangle.setOrigin(50,50);
-    rectangle.setOutlineColor(sf::Color::Red);
-    rectangle.setOutlineThickness(5.f);
-    rectangle.setPosition(500.f,500.f);
-    rectangle.rotate(10.f);
-    
     // run the program as long as the window is open
     while (window.isOpen()) {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -104,7 +97,6 @@ int main() {
         }
         window.draw(ship);
         window.draw(missile);
-        window.draw(rectangle);
         
         // end the current frame
         window.display();
