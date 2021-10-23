@@ -6,6 +6,18 @@
  Created by Ryan Smith
  Utilizing https://github.com/satanas/sfml-asteroids to help make this and understand
  how to use sfml
+ 
+ TODO:
+    * Missiles wrap and travel set distance before dying
+    * better sounds
+        * thrusters
+        * explosion
+    * thrusters has animation
+    * background music
+    * score
+    * death count
+    * figure out cmake
+ 
  */
 
 #include <iostream>
@@ -88,7 +100,6 @@ int main() {
         }
         
         // if ship hasn't moved yet
-        // buggy resets even when ship isn't moving
         if (!(ship.getPosition() == sf::Vector2f(GAME_WIDTH/2,GAME_HEIGHT/2) && ship.getVelocity() == sf::Vector2f(0,0))){
             for (int i=0; i<numAsteroids; i++) {
                 if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
