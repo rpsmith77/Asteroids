@@ -32,6 +32,11 @@ int main() {
     collision.setVolume(30);
     collision.setPitch(.5);
     
+    sf::Sound explosion;
+    explosion.setBuffer(buffer);
+    explosion.setVolume(30);
+    explosion.setPitch(.25);
+    
     // spaceship
     Spaceship ship;
     
@@ -91,10 +96,10 @@ int main() {
                     ship.reset();
                     collision.play();
                 }
-                for (int i=0; i<totalMissile; i++) {
-                    if (missile[i].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
+                for (int j=0; j<totalMissile; j++) {
+                    if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                         asteroids[i].reset();
-                        collision.play();
+                        explosion.play();
                     }
                 }
             }
