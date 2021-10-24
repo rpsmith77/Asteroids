@@ -11,7 +11,6 @@
  
  TODO:
     * get sounds working within Missle.cpp
-    * thrusters has animation
     * score
     * death count
     * figure out cmake

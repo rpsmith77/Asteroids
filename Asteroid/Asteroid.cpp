@@ -15,6 +15,11 @@ Asteroid::Asteroid(){
     explosion.setBuffer(explosionBuffer);
     explosion.setVolume(30);
     
+    // all asteroids share these
+    asteroid.setFillColor(sf::Color::Black);
+    asteroid.setOutlineColor(sf::Color::White);
+    asteroid.setOutlineThickness(1);
+    
     reset();
     
 }
@@ -42,18 +47,25 @@ void Asteroid::wrapScreen(){
 }
 
 void Asteroid::reset(){
+    // asteroid death sound
+    explosion.play();
+    
+    // create random sized asteroid
     asteroid.setPointCount(rand() % 5 + 7);
     asteroid.setRadius(rand() % 30 + 10);
-    asteroid.setFillColor(sf::Color::Black);
-    asteroid.setOutlineColor(sf::Color::White);
-    asteroid.setOutlineThickness(1);
     asteroid.setOrigin(asteroid.getRadius(), asteroid.getRadius());
+    
+    // randomize asteroid position
     asteroid.setPosition(rand() % GAME_WIDTH, rand() % GAME_HEIGHT);
-    velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 : -1 * float(rand() % 10) / 100;
-    velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 : -1 * float(rand() % 10) / 100;
-    float speed = sqrt(velocity.x * velocity.x  + velocity.y * velocity.y);
+    
+    
+    // randomize velocity
+    velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 + .01f: -1 * float(rand() % 10) / 100 + .01f;
+    velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 + .01f: -1 * float(rand() % 10) / 100 + .01f;
+    // speed = magnitude of vector
+    float speed = sqrt(pow(velocity.x, 2)  + pow(velocity.y, 2));
+    // normalize vector then times it by half the max speed
     if (speed > .5 * MAX_SPEED){
         velocity = .5f * MAX_SPEED * sf::Vector2f(velocity.x/speed, velocity.y/speed);
     }
-    explosion.play();
 }
