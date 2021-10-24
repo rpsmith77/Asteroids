@@ -22,6 +22,10 @@
 		25259D4F2722180500C280BE /* Asteroid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Asteroid.hpp; sourceTree = "<group>"; };
 		25259D572723B4E200C280BE /* Missile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Missile.cpp; sourceTree = "<group>"; };
 		25259D582723B4E200C280BE /* Missile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Missile.hpp; sourceTree = "<group>"; };
+		25259D5A2724CFBD00C280BE /* lost_life.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = lost_life.wav; path = ../../Downloads/lost_life.wav; sourceTree = "<group>"; };
+		25259D5B2724D03C00C280BE /* lost_life.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lost_life.wav; sourceTree = "<group>"; };
+		25259D5E2724D75400C280BE /* missile_fired.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = missile_fired.wav; sourceTree = "<group>"; };
+		25259D612724E54600C280BE /* Underwater_Exploration_Godmode.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Underwater_Exploration_Godmode.ogg; sourceTree = "<group>"; };
 		25B012A9271B808300B86C3C /* Asteroid */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Asteroid; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B012AC271B808300B86C3C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,6 +44,9 @@
 		25B012A1271B808300B86C3C = {
 			isa = PBXGroup;
 			children = (
+				25259D612724E54600C280BE /* Underwater_Exploration_Godmode.ogg */,
+				25259D5E2724D75400C280BE /* missile_fired.wav */,
+				25259D5A2724CFBD00C280BE /* lost_life.wav */,
 				25259D432720C76500C280BE /* blip.wav */,
 				25B012AB271B808300B86C3C /* Asteroid */,
 				25B012AA271B808300B86C3C /* Products */,
@@ -57,6 +64,7 @@
 		25B012AB271B808300B86C3C /* Asteroid */ = {
 			isa = PBXGroup;
 			children = (
+				25259D5B2724D03C00C280BE /* lost_life.wav */,
 				25B012AC271B808300B86C3C /* main.cpp */,
 				25259D4A272216A500C280BE /* Constants.h */,
 				25259D4B2722173100C280BE /* Spaceship.cpp */,

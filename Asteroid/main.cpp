@@ -7,13 +7,11 @@
  Utilizing https://github.com/satanas/sfml-asteroids to help make this and understand
  how to use sfml
  
+ Sounds from mixkit.co/free-sound-effects
+ 
  TODO:
-    * Missiles wrap and travel set distance before dying
-    * better sounds
-        * thrusters
-        * explosion
+    * get sounds working within Missle.cpp
     * thrusters has animation
-    * background music
     * score
     * death count
     * figure out cmake
@@ -35,22 +33,26 @@ int main() {
     // create the window
     sf::RenderWindow window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
     
-    // load sounds
-    sf::SoundBuffer buffer;
-    if(!buffer.loadFromFile("blip.wav"))
-        return -1;
-    sf::Sound collision;
-    collision.setBuffer(buffer);
-    collision.setVolume(30);
-    collision.setPitch(.5);
-    
-    sf::Sound explosion;
-    explosion.setBuffer(buffer);
-    explosion.setVolume(30);
-    explosion.setPitch(.25);
     
     // spaceship
     Spaceship ship;
+    
+    // load sound
+    sf::SoundBuffer missileFiredBuffer;
+    if(!missileFiredBuffer.loadFromFile("missile_fired.wav"))
+        return -1;
+    sf::Sound missileFired;
+    missileFired.setBuffer(missileFiredBuffer);
+    
+    // load background music
+    sf::Music backgroundMusic;
+    if (!backgroundMusic.openFromFile("Underwater_Exploration_Godmode.ogg"))
+        return -1;
+    backgroundMusic.setLoop(true);
+    backgroundMusic.setVolume(80);
+    backgroundMusic.play();
+    
+    
     
     // asteroids
     srand((unsigned int) time(0));
@@ -83,6 +85,7 @@ int main() {
                     ship.updateRotation(LEFT);
                 } else if(event.key.code == sf::Keyboard::Space){
                     missile[missileIndex++] = Missile(ship.getAngle(), ship.getPosition());
+                    missileFired.play();
                     if (missileIndex >= totalMissile)
                         missileIndex = 0;
                 }
@@ -105,12 +108,10 @@ int main() {
                 if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                     asteroids[i].reset();
                     ship.reset();
-                    collision.play();
                 }
                 for (int j=0; j<totalMissile; j++) {
                     if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                         asteroids[i].reset();
-                        explosion.play();
                     }
                 }
             }
@@ -130,6 +131,7 @@ int main() {
         
         // end the current frame
         window.display();
+        
     } // end game loop
     
     return 0;

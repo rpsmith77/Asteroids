@@ -9,12 +9,15 @@
 #define Asteroid_hpp
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Constants.h"
 
 class Asteroid : public sf::Drawable, public sf::Transformable {
 private:
     sf::CircleShape asteroid;
     sf::Vector2f velocity;
+    sf::SoundBuffer explosionBuffer;
+    sf::Sound explosion;
     
 public:
     Asteroid();

@@ -18,6 +18,12 @@ Spaceship::Spaceship(){
     ship.setOutlineColor(sf::Color::White);
     ship.setOutlineThickness(1);
     ship.setPosition(GAME_WIDTH / 2, GAME_HEIGHT / 2);
+    
+    // load sounds
+    if(!collisionBuffer.loadFromFile("lost_life.wav"))
+        return -1;
+    collision.setBuffer(collisionBuffer);
+    collision.setVolume(30);
 }
 
 // methods
@@ -62,4 +68,5 @@ void Spaceship::reset(){
     velocity = sf::Vector2f(0,0);
     ship.setRotation(0);
     ship.setPosition(GAME_WIDTH/2, GAME_HEIGHT/2);
+    collision.play();
 }

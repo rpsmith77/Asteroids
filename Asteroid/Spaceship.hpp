@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Constants.h"
 
 class Spaceship : public sf::Drawable, public sf::Transformable {
@@ -17,6 +18,9 @@ private:
     sf::ConvexShape ship;
     sf::Vector2f velocity;
     float rotationRate = 360/20;
+    
+    sf::SoundBuffer collisionBuffer;
+    sf::Sound collision;
     
 public:
     Spaceship();

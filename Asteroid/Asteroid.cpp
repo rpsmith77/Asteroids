@@ -9,7 +9,14 @@
 
 Asteroid::Asteroid(){
     srand((unsigned) time(0));
+    
+    if(!explosionBuffer.loadFromFile("blip.wav"))
+        return -1;
+    explosion.setBuffer(explosionBuffer);
+    explosion.setVolume(30);
+    
     reset();
+    
 }
 
 void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -48,5 +55,5 @@ void Asteroid::reset(){
     if (speed > .5 * MAX_SPEED){
         velocity = .5f * MAX_SPEED * sf::Vector2f(velocity.x/speed, velocity.y/speed);
     }
-    
+    explosion.play();
 }
