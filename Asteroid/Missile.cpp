@@ -9,12 +9,11 @@
 #include <iostream>
 
 // default constructor
-Missile::Missile(){
-    alive = false;
-}
+Missile::Missile(){ alive = false; }
 
 // constructor for live missile
 Missile::Missile(float angle,sf::Vector2f startingPoint){
+    
     alive = true;
     
     missile.setSize(size);

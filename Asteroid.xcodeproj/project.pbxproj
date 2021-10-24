@@ -25,6 +25,7 @@
 		25259D5E2724D75400C280BE /* missile_fired.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = missile_fired.wav; sourceTree = "<group>"; };
 		25259D612724E54600C280BE /* Underwater_Exploration_Godmode.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Underwater_Exploration_Godmode.ogg; sourceTree = "<group>"; };
 		25259D632724F91F00C280BE /* lost_life.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lost_life.wav; sourceTree = "<group>"; };
+		25259D642724FC7A00C280BE /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		25B012A9271B808300B86C3C /* Asteroid */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Asteroid; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B012AC271B808300B86C3C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +44,7 @@
 		25B012A1271B808300B86C3C = {
 			isa = PBXGroup;
 			children = (
+				25259D642724FC7A00C280BE /* PressStart2P-Regular.ttf */,
 				25259D612724E54600C280BE /* Underwater_Exploration_Godmode.ogg */,
 				25259D5E2724D75400C280BE /* missile_fired.wav */,
 				25259D632724F91F00C280BE /* lost_life.wav */,

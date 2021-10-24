@@ -23,7 +23,7 @@ private:
     bool alive;
     sf::Vector2f startingPoint;
     // dimensions of missle
-    const sf::Vector2f size = sf::Vector2f(10.f,5.f);
+    sf::Vector2f size = sf::Vector2f(10.f,5.f);
     
     // missile sound
     sf::SoundBuffer missileFiredBuffer;

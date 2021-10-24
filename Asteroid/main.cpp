@@ -25,13 +25,26 @@
 #include "Spaceship.hpp"
 #include "Asteroid.hpp"
 #include "Missile.hpp"
+#include <string>
 
+void setScoreboard(sf::Text& scoreboard, int timesDied, int asteroidsDestroyed){
+    scoreboard.setString("Deaths:" + std::to_string(timesDied) + "\tScore:" + std::to_string(asteroidsDestroyed));
+}
 
 int main() {
     
     // create the window
     sf::RenderWindow window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
     
+    sf::Font font;
+    if(!font.loadFromFile("PressStart2P-Regular.ttf"))
+        return -1;
+    sf::Text scoreboard;
+    scoreboard.setFont(font);
+    scoreboard.setPosition(10,10);
+    int timesDied = 0;
+    int asteroidsDestroyed = 0;
+    setScoreboard(scoreboard, timesDied, asteroidsDestroyed);
     
     // spaceship
     Spaceship ship;
@@ -107,10 +120,14 @@ int main() {
                 if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                     asteroids[i].reset();
                     ship.reset();
+                    timesDied++;
+                    setScoreboard(scoreboard, timesDied, asteroidsDestroyed);
                 }
                 for (int j=0; j<totalMissile; j++) {
                     if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                         asteroids[i].reset();
+                        asteroidsDestroyed++;
+                        setScoreboard(scoreboard, timesDied, asteroidsDestroyed);
                     }
                 }
             }
@@ -127,7 +144,7 @@ int main() {
         for (int i=0; i<totalMissile; i++) {
             window.draw(missile[i]);
         }
-        
+        window.draw(scoreboard);
         // end the current frame
         window.display();
         
