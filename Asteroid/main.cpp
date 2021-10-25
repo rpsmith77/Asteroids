@@ -10,7 +10,7 @@
  Sounds from mixkit.co/free-sound-effects
  
  TODO:
-    * get sounds working within Missle.cpp
+    * make asteroids break into smaller asteroids
     * figure out cmake
  
  */
