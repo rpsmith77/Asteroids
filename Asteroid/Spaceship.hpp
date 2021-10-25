@@ -10,9 +10,6 @@
 #ifndef Spaceship_hpp
 #define Spaceship_hpp
 
-#include <stdio.h>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include "Constants.h"
 
 class Spaceship : public sf::Drawable, public sf::Transformable {

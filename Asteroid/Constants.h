@@ -8,8 +8,10 @@
 #ifndef Constants_h
 #define Constants_h
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <math.h>
-#include <string.h>
+#include <string>
 
 // game properties
 const std::string GAME_NAME = "Asteroids!";

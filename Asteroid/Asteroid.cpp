@@ -6,7 +6,6 @@
 //
 
 #include "Asteroid.hpp"
-#include <iostream>
 
 // constructor
 Asteroid::Asteroid(){

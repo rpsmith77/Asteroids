@@ -6,7 +6,6 @@
 //
 
 #include "Missile.hpp"
-#include <iostream>
 
 // default constructor
 Missile::Missile(){ alive = false; }

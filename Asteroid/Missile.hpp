@@ -8,11 +8,7 @@
 #ifndef Missile_hpp
 #define Missile_hpp
 
-#include <stdio.h>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include "Constants.h"
-#include <math.h>
+# include "Constants.h"
 
 class Missile : public sf::Drawable, public sf::Transformable {
 private:

@@ -12,19 +12,14 @@
  TODO:
     * make asteroids break into smaller asteroids
     * figure out cmake
- 
  */
 
-#include <iostream>
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
-#include <math.h>
 #include "Constants.h"
 #include "Spaceship.hpp"
 #include "Asteroid.hpp"
 #include "Missile.hpp"
 #include "Sound.hpp"
-#include <string>
+
 
 void setScoreboard(sf::Text& scoreboard, int timesDied, int asteroidsDestroyed){
     scoreboard.setString("Deaths:" + std::to_string(timesDied) + "\tScore:" + std::to_string(asteroidsDestroyed));
@@ -91,7 +86,7 @@ int main() {
                 } else if(event.key.code == sf::Keyboard::Left){
                     ship.updateRotation(LEFT);
                 } else if(event.key.code == sf::Keyboard::Space){
-                    ship.thrust(-0.1f);
+                    ship.thrust(-0.2f);
                     missile[missileIndex++] = Missile(ship.getAngle(), ship.getPosition());
                     missileFired.play();
                     if (missileIndex >= totalMissile)
@@ -120,7 +115,7 @@ int main() {
                     setScoreboard(scoreboard, ++timesDied, asteroidsDestroyed);
                 }
                 for (int j=0; j<totalMissile; j++) {
-                    if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){// check if missile and asteroid collide
+                    if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){ // check if missile and asteroid collide
                         asteroids[i].reset();
                         missile[j].blowUp();
                         explosion.play();

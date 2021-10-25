@@ -9,8 +9,7 @@
 #ifndef Sound_hpp
 #define Sound_hpp
 
-#include <SFML/Audio.hpp>
-#include <string>
+# include "Constants.h"
 
 class Sound {
 private:
