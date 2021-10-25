@@ -28,7 +28,6 @@ private:
     
     void setVelocity(float angle);
     void setDistanceTraveled();
-    void blowUp();
     bool outOfRange();
     
 public:
@@ -39,6 +38,7 @@ public:
     sf::FloatRect getGlobalBounds() {return missile.getGlobalBounds();};
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void update();
+    void blowUp();
 
 };
 

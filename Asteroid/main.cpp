@@ -117,12 +117,12 @@ int main() {
                     asteroids[i].reset();
                     ship.reset();
                     shipDied.play();
-                    explosion.play();
                     setScoreboard(scoreboard, ++timesDied, asteroidsDestroyed);
                 }
                 for (int j=0; j<totalMissile; j++) {
                     if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                         asteroids[i].reset();
+                        missile[j].blowUp();
                         explosion.play();
                         setScoreboard(scoreboard, timesDied, ++asteroidsDestroyed);
                     }
