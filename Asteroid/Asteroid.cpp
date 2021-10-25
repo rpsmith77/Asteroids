@@ -60,14 +60,22 @@ void Asteroid::reset(){
     // randomize asteroid position
     asteroid.setPosition(rand() % GAME_WIDTH, rand() % GAME_HEIGHT);
     
-    
     // randomize velocity
-    velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 + .05f: -1 * float(rand() % 10) / 100 + .05f;
-    velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 + .05f: -1 * float(rand() % 10) / 100 + .05f;
+    randomVelocity();
     // speed = magnitude of vector
-    float speed = sqrt(pow(velocity.x, 2)  + pow(velocity.y, 2));
+    float speed = getSpeed();
     // normalize vector then times it by half the max speed
     if (speed > .5 * MAX_SPEED){
         velocity = .5f * MAX_SPEED * sf::Vector2f(velocity.x/speed, velocity.y/speed);
     }
+
+}
+
+void Asteroid::randomVelocity(){
+    velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 : -1 * float(rand() % 10) / 100;
+    velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 : -1 * float(rand() % 10) / 100;
+    
+    if(getSpeed() == 0)
+        randomVelocity();
+    
 }

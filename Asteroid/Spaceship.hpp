@@ -23,23 +23,20 @@ private:
     // ship properties
     sf::ConvexShape ship;
     sf::Vector2f velocity;
+    void wrapScreen();
     
 public:
     // constructor
     Spaceship();
     
-    // accessors
     sf::Vector2f getVelocity() {return velocity;};
     sf::FloatRect getGlobalBounds() {return ship.getGlobalBounds();};
     float getAngle(){ return ship.getRotation(); };
     sf::Vector2f getPosition(){ return ship.getPosition(); };
-    
-    // member methods
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void thrust(float direction = 1);
     void updateRotation(int);
     void update();
-    void wrapScreen();
     void reset();
     
     

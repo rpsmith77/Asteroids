@@ -17,21 +17,19 @@ private:
     sf::CircleShape asteroid;
     sf::Vector2f velocity;
     
-    
+    float getSpeed() { return sqrt(pow(velocity.x, 2)  + pow(velocity.y, 2)); };
+    sf::Vector2f getVelocity() { return velocity; };
+    void wrapScreen();
+    void randomVelocity();
+
 public:
     // constructor
     Asteroid();
     
-    // accessors
-    sf::Vector2f getVelocity() {return velocity;};
-    sf::FloatRect getGlobalBounds() {return asteroid.getGlobalBounds();};
-    
-    // methods
+    sf::FloatRect getGlobalBounds() { return asteroid.getGlobalBounds(); };
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void update();
-    void wrapScreen();
     void reset();
-    
     
 };
 #endif /* Asteroid_hpp */

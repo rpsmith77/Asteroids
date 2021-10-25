@@ -24,24 +24,22 @@ private:
     bool alive;
     int range;
     sf::Vector2f startingPoint;
-    // dimensions of missle
     sf::Vector2f size = sf::Vector2f(10.f,5.f);
+    
+    void setVelocity(float angle);
+    void setDistanceTraveled();
+    void blowUp();
+    bool outOfRange();
     
 public:
     // constructors
     Missile();
     Missile(float angle, sf::Vector2f startingPoint);
     
-    // accessors
     sf::FloatRect getGlobalBounds() {return missile.getGlobalBounds();};
-    void setVelocity(float angle);
-    void setDistanceTraveled();
-    
-    // methods
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void update();
-    void blowUp();
-    bool outOfRange();
+
 };
 
 #endif /* Missile_hpp */

@@ -92,7 +92,6 @@ int main() {
                     ship.updateRotation(LEFT);
                 } else if(event.key.code == sf::Keyboard::Space){
                     ship.thrust(-0.1f);
-                    missileFired.play();
                     missile[missileIndex++] = Missile(ship.getAngle(), ship.getPosition());
                     missileFired.play();
                     if (missileIndex >= totalMissile)
