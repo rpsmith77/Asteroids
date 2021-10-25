@@ -17,9 +17,6 @@ private:
     sf::CircleShape asteroid;
     sf::Vector2f velocity;
     
-    // sound
-    sf::SoundBuffer explosionBuffer;
-    sf::Sound explosion;
     
 public:
     // constructor

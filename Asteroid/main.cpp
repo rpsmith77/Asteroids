@@ -11,8 +11,6 @@
  
  TODO:
     * get sounds working within Missle.cpp
-    * score
-    * death count
     * figure out cmake
  
  */
@@ -25,6 +23,7 @@
 #include "Spaceship.hpp"
 #include "Asteroid.hpp"
 #include "Missile.hpp"
+#include "Sound.hpp"
 #include <string>
 
 void setScoreboard(sf::Text& scoreboard, int timesDied, int asteroidsDestroyed){
@@ -36,6 +35,7 @@ int main() {
     // create the window
     sf::RenderWindow window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
     
+    // create scoreboard
     sf::Font font;
     if(!font.loadFromFile("PressStart2P-Regular.ttf"))
         return -1;
@@ -46,24 +46,15 @@ int main() {
     int asteroidsDestroyed = 0;
     setScoreboard(scoreboard, timesDied, asteroidsDestroyed);
     
-    // spaceship
-    Spaceship ship;
-    
-    // load sound
-    sf::SoundBuffer missileFiredBuffer;
-    if(!missileFiredBuffer.loadFromFile("missile_fired.wav"))
-        return -1;
-    sf::Sound missileFired;
-    missileFired.setBuffer(missileFiredBuffer);
-    
-    // load background music
-    sf::Music backgroundMusic;
-    if (!backgroundMusic.openFromFile("Underwater_Exploration_Godmode.ogg"))
-        return -1;
+    // Background Music
+    Sound backgroundMusic("Underwater_Exploration_Godmode.ogg");
     backgroundMusic.setLoop(true);
     backgroundMusic.setVolume(80);
     backgroundMusic.play();
     
+    // spaceship
+    Spaceship ship;
+    Sound shipDied("lost_life.wav");
     
     
     // asteroids
@@ -73,10 +64,14 @@ int main() {
     for (int i = 0; i<numAsteroids; i++) { // all asteroids will be identical w/o this
         asteroids[i].reset();
     }
+    Sound explosion("blip.wav");
+    explosion.setVolume(50.f);
     
+    // missiles
     int totalMissile = 5;
     Missile missile[totalMissile];
     int missileIndex = 0;
+    Sound missileFired("missile_fired.wav");
     
     // run the program as long as the window is open
     while (window.isOpen()) {
@@ -96,6 +91,8 @@ int main() {
                 } else if(event.key.code == sf::Keyboard::Left){
                     ship.updateRotation(LEFT);
                 } else if(event.key.code == sf::Keyboard::Space){
+                    ship.thrust(-0.1f);
+                    missileFired.play();
                     missile[missileIndex++] = Missile(ship.getAngle(), ship.getPosition());
                     missileFired.play();
                     if (missileIndex >= totalMissile)
@@ -120,14 +117,15 @@ int main() {
                 if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                     asteroids[i].reset();
                     ship.reset();
-                    timesDied++;
-                    setScoreboard(scoreboard, timesDied, asteroidsDestroyed);
+                    shipDied.play();
+                    explosion.play();
+                    setScoreboard(scoreboard, ++timesDied, asteroidsDestroyed);
                 }
                 for (int j=0; j<totalMissile; j++) {
                     if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
                         asteroids[i].reset();
-                        asteroidsDestroyed++;
-                        setScoreboard(scoreboard, timesDied, asteroidsDestroyed);
+                        explosion.play();
+                        setScoreboard(scoreboard, timesDied, ++asteroidsDestroyed);
                     }
                 }
             }

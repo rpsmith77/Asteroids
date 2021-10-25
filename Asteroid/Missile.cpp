@@ -25,6 +25,8 @@ Missile::Missile(float angle,sf::Vector2f startingPoint){
     this->startingPoint = startingPoint;
     previousPoint = startingPoint;
     distanceTraveled = 0;
+    // range = sqrt(pow(GAME_WIDTH,2) + pow(GAME_HEIGHT,2));
+    range = 500;
     
 }
 
@@ -71,5 +73,5 @@ void Missile::blowUp(){
 
 // check to see if total distance traveld exceeds the missile's range
 bool Missile::outOfRange(){
-    return distanceTraveled >= (GAME_WIDTH + GAME_HEIGHT) / 4;
+    return distanceTraveled >= range;
 }

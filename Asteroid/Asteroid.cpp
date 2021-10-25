@@ -6,33 +6,36 @@
 //
 
 #include "Asteroid.hpp"
+#include <iostream>
 
+// constructor
 Asteroid::Asteroid(){
+    // create random
     srand((unsigned) time(0));
-    
-    if(!explosionBuffer.loadFromFile("blip.wav"))
-        return -1;
-    explosion.setBuffer(explosionBuffer);
-    explosion.setVolume(30);
     
     // all asteroids share these
     asteroid.setFillColor(sf::Color::Black);
     asteroid.setOutlineColor(sf::Color::White);
     asteroid.setOutlineThickness(1);
     
+    // set remaining asteroid info
     reset();
     
 }
 
+// draw current state of asteroid object
 void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
     target.draw(asteroid, states);
 }
+
+// move asteroid to correct position
 void Asteroid::update(){
     asteroid.move(velocity);
     wrapScreen();
 }
 
+// move asteroid to other side of the screen, dependent on previous position and game boundaries
 void Asteroid::wrapScreen(){
     if (asteroid.getPosition().x < 0){
         asteroid.setPosition(GAME_WIDTH, asteroid.getPosition().y);
@@ -46,9 +49,8 @@ void Asteroid::wrapScreen(){
     }
 }
 
+// runs eachtime the asteroid dies/is created
 void Asteroid::reset(){
-    // asteroid death sound
-    explosion.play();
     
     // create random sized asteroid
     asteroid.setPointCount(rand() % 5 + 7);
@@ -60,8 +62,8 @@ void Asteroid::reset(){
     
     
     // randomize velocity
-    velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 + .01f: -1 * float(rand() % 10) / 100 + .01f;
-    velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 + .01f: -1 * float(rand() % 10) / 100 + .01f;
+    velocity.x = rand() % 2 == 0 ? float(rand() % 10) / 100 + .05f: -1 * float(rand() % 10) / 100 + .05f;
+    velocity.y = rand() % 2 == 0 ? float(rand() % 10) / 100 + .05f: -1 * float(rand() % 10) / 100 + .05f;
     // speed = magnitude of vector
     float speed = sqrt(pow(velocity.x, 2)  + pow(velocity.y, 2));
     // normalize vector then times it by half the max speed

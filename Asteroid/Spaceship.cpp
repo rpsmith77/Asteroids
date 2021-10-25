@@ -26,11 +26,6 @@ Spaceship::Spaceship(){
     // start in center of screen
     ship.setPosition(GAME_WIDTH / 2, GAME_HEIGHT / 2);
     
-    // load sounds
-    if(!collisionBuffer.loadFromFile("lost_life.wav"))
-        return -1;
-    collision.setBuffer(collisionBuffer);
-    collision.setVolume(30);
 }
 
 // draws current state of the ship
@@ -40,10 +35,10 @@ void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 // adds velocity in current direction
-void Spaceship::thrust(){
+void Spaceship::thrust(float direction){
     float r = ship.getRotation();
-    velocity.x += ACCELERATION * cos(r * DEG2RAD);
-    velocity.y += ACCELERATION * sin(r * DEG2RAD);
+    velocity.x += ACCELERATION * cos(r * DEG2RAD) * direction;
+    velocity.y += ACCELERATION * sin(r * DEG2RAD) * direction;
     // speed = magnitude of vector
     float speed = sqrt(pow(velocity.x, 2)  + pow(velocity.y, 2));
     // normalize vector then scale it by the max speed
@@ -82,5 +77,4 @@ void Spaceship::reset(){
     velocity = sf::Vector2f(0,0);
     ship.setRotation(0);
     ship.setPosition(GAME_WIDTH/2, GAME_HEIGHT/2);
-    collision.play();
 }

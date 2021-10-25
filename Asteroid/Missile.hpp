@@ -12,6 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Constants.h"
+#include <math.h>
 
 class Missile : public sf::Drawable, public sf::Transformable {
 private:
@@ -21,13 +22,10 @@ private:
     sf::Vector2f previousPoint;
     float distanceTraveled;
     bool alive;
+    int range;
     sf::Vector2f startingPoint;
     // dimensions of missle
     sf::Vector2f size = sf::Vector2f(10.f,5.f);
-    
-    // missile sound
-    sf::SoundBuffer missileFiredBuffer;
-    sf::Sound missileFired;
     
 public:
     // constructors

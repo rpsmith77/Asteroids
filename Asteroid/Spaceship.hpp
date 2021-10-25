@@ -24,10 +24,6 @@ private:
     sf::ConvexShape ship;
     sf::Vector2f velocity;
     
-    // ship sound
-    sf::SoundBuffer collisionBuffer;
-    sf::Sound collision;
-    
 public:
     // constructor
     Spaceship();
@@ -40,7 +36,7 @@ public:
     
     // member methods
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    void thrust();
+    void thrust(float direction = 1);
     void updateRotation(int);
     void update();
     void wrapScreen();
