@@ -110,17 +110,17 @@ int main() {
             missile[i].update();
         }
         
-        // if ship hasn't moved yet
+        // if ship has moved
         if (!(ship.getPosition() == sf::Vector2f(GAME_WIDTH/2,GAME_HEIGHT/2) && ship.getVelocity() == sf::Vector2f(0,0))){
             for (int i=0; i<numAsteroids; i++) {
-                if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
+                if (ship.getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){ // check if ship and asteroid collide
                     asteroids[i].reset();
                     ship.reset();
                     shipDied.play();
                     setScoreboard(scoreboard, ++timesDied, asteroidsDestroyed);
                 }
                 for (int j=0; j<totalMissile; j++) {
-                    if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){
+                    if (missile[j].getGlobalBounds().intersects(asteroids[i].getGlobalBounds())){// check if missile and asteroid collide
                         asteroids[i].reset();
                         missile[j].blowUp();
                         explosion.play();
